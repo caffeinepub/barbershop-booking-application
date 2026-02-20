@@ -1,0 +1,117 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-new-salon-specific-dashboard-route-accessible-after-salon-registration-that-displays-analytics-and-metrics-unique-to-each-salon",
+      "featureTitle": "Create a new salon-specific dashboard route accessible after salon registration that displays analytics and metrics unique to each salon",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-a-line-or-bar-graph-on-the-salon-dashboard-showing-sales-per-month-for-the-last-12-months-with-revenue-amounts-on-the-y-axis-and-months-on-the-x-axis",
+      "featureTitle": "Display a line or bar graph on the salon dashboard showing sales per month for the last 12 months with revenue amounts on the y-axis and months on the x-axis",
+      "files": [
+        "frontend/src/components/MonthlySalesChart.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-a-line-or-bar-graph-on-the-salon-dashboard-showing-bookings-per-month-for-the-last-12-months-with-booking-counts-on-the-y-axis-and-months-on-the-x-axis",
+      "featureTitle": "Display a line or bar graph on the salon dashboard showing bookings per month for the last 12 months with booking counts on the y-axis and months on the x-axis",
+      "files": [
+        "frontend/src/components/MonthlyBookingsChart.tsx",
+        "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-customer-reviews-on-the-salon-dashboard-with-rating-comment-text-reviewer-name-and-date-sorted-by-most-recent-first",
+      "featureTitle": "Display customer reviews on the salon dashboard with rating, comment text, reviewer name, and date, sorted by most recent first",
+      "files": [
+        "frontend/src/components/ReviewsList.tsx",
+        "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-authentication-and-authorization-to-ensure-salon-owners-can-only-access-their-own-salon-dashboard-data-and-cannot-view-other-salons-analytics",
+      "featureTitle": "Implement authentication and authorization to ensure salon owners can only access their own salon dashboard data and cannot view other salons' analytics",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

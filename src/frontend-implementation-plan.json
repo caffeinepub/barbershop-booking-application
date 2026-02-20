@@ -1,0 +1,125 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add personalized salon dashboard with analytics",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a new salon-specific dashboard route accessible after salon registration that displays analytics and metrics unique to each salon",
+      "acceptanceCriteria": [
+        "Each salon owner can access their own personalized dashboard",
+        "Dashboard is only accessible after salon registration is complete",
+        "Dashboard displays salon-specific data, not aggregated data from all salons"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "operation": "create",
+          "description": "Create a new authenticated page component that displays salon-specific analytics. The page should verify authentication using the authorization component, fetch the current user's salon ID, and render a dashboard layout with sections for monthly sales graphs, booking graphs, and customer reviews. Include loading states, error handling for unauthorized access, and empty states when no salon is associated with the user. Use the authorization component to ensure only authenticated users with salon ownership can access this dashboard."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add a new route '/salon-dashboard' that renders the SalonOwnerDashboardPage component. Wire this route into the existing router configuration alongside other authenticated routes like '/appointments' and '/booking'. Ensure the route is accessible from the navigation menu for authenticated salon owners."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Add a conditional navigation link to 'My Salon Dashboard' in the header navigation that appears only for authenticated users who own a salon. Place this link alongside existing navigation items. The link should route to '/salon-dashboard' and be hidden for regular users or guests."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Display a line or bar graph on the salon dashboard showing sales per month for the last 12 months with revenue amounts on the y-axis and months on the x-axis",
+      "acceptanceCriteria": [
+        "Graph visualizes sales trends over time",
+        "Shows data for the most recent 12 months",
+        "Revenue amounts are clearly labeled and formatted as currency",
+        "Months are displayed chronologically on the x-axis"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MonthlySalesChart.tsx",
+          "operation": "create",
+          "description": "Create a chart component that accepts monthlySales data (array of MonthlySalesData from backend interface) as a prop and renders a bar or line graph using a charting library (e.g., recharts or chart.js). The component should display months on the x-axis and revenue amounts (converted from cents to dollars) on the y-axis. Format currency values with dollar signs and two decimal places. Include loading skeleton, error state, and empty state when no sales data exists. Ensure the chart is responsive and displays up to 12 months of data."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a new React Query hook 'useSalonDashboard' that fetches salon dashboard data using the backend method 'getSalonDashboard(salonId: string)'. The hook should accept salonId as a parameter, return loading/error/data states, and cache the dashboard data. Include error handling with toast notifications for fetch failures. Use the authorization component to verify the user has permission before making the query."
+        },
+        {
+          "path": "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Integrate the MonthlySalesChart component into the dashboard page. Fetch dashboard data using the useSalonDashboard hook, extract the monthlySales array from the BusinessDashboard response, and pass it to the MonthlySalesChart component. Add a section header 'Sales Performance' above the chart and handle loading/error states appropriately."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Display a line or bar graph on the salon dashboard showing bookings per month for the last 12 months with booking counts on the y-axis and months on the x-axis",
+      "acceptanceCriteria": [
+        "Graph visualizes booking trends over time",
+        "Shows data for the most recent 12 months",
+        "Booking counts are clearly labeled with whole numbers",
+        "Months are displayed chronologically on the x-axis"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MonthlyBookingsChart.tsx",
+          "operation": "create",
+          "description": "Create a chart component that accepts monthlyBookings data (array of MonthlyBookingStats from backend interface) as a prop and renders a bar or line graph. Display months on the x-axis and booking counts on the y-axis as whole numbers. Include loading skeleton, error state, and empty state when no booking data exists. Ensure the chart is responsive and displays up to 12 months of data. Use consistent styling with MonthlySalesChart for visual cohesion."
+        },
+        {
+          "path": "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Integrate the MonthlyBookingsChart component into the dashboard page. Extract the monthlyBookings array from the BusinessDashboard response fetched via useSalonDashboard hook and pass it to the MonthlyBookingsChart component. Add a section header 'Booking Trends' above the chart. Position this chart below or alongside the sales chart in a responsive grid layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Display customer reviews on the salon dashboard with rating, comment text, reviewer name, and date, sorted by most recent first",
+      "acceptanceCriteria": [
+        "Reviews are displayed in a list or card format",
+        "Each review shows the rating (e.g., star visualization), comment text, reviewer name, and date",
+        "Reviews are sorted with most recent at the top",
+        "Empty state is shown when no reviews exist"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ReviewsList.tsx",
+          "operation": "create",
+          "description": "Create a component that accepts reviews data (array of Review from backend interface) as a prop and displays each review in a card format. Each card should show the reviewer name, rating visualized as stars (1-5 scale), comment text, and timestamp formatted as a readable date. Sort reviews by timestamp in descending order (most recent first). Include an empty state message 'No reviews yet' when the reviews array is empty. Use card styling consistent with existing components like SalonCard and ServiceCard."
+        },
+        {
+          "path": "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Integrate the ReviewsList component into the dashboard page. Extract the reviews array from the BusinessDashboard response fetched via useSalonDashboard hook and pass it to the ReviewsList component. Add a section header 'Customer Reviews' above the list. Position this section below the charts in the dashboard layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement authentication and authorization to ensure salon owners can only access their own salon dashboard data and cannot view other salons' analytics",
+      "acceptanceCriteria": [
+        "Backend validates salon ownership before returning dashboard data",
+        "Frontend prevents unauthorized access to other salons' dashboards",
+        "Appropriate error messages are shown for unauthorized access attempts"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "operation": "modify",
+          "description": "Add authorization checks at the page level using the authorization component. Verify the user is authenticated before rendering dashboard content. If not authenticated, display a message prompting login. Use the backend's getSalonDashboard method which enforces backend-level authorization to ensure users can only fetch their own salon's data. Handle authorization errors from the backend gracefully by displaying an 'Access Denied' message and redirecting to the home page. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Update the useSalonDashboard hook to handle authorization errors returned from the backend. When the backend traps with an unauthorized error, catch the error and display a toast notification with the message 'You do not have permission to view this salon dashboard'. Set the query to disabled state when the user is not authenticated. Verify the authorization component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

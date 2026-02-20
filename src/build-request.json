@@ -1,0 +1,170 @@
+{
+  "kind": "build_request",
+  "title": "Add personalized salon dashboard with analytics",
+  "projectName": "SalonHub AI Stylist",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a new salon-specific dashboard route accessible after salon registration that displays analytics and metrics unique to each salon",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "personalized dashboard per salon after registration"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each salon owner can access their own personalized dashboard",
+        "Dashboard is only accessible after salon registration is complete",
+        "Dashboard displays salon-specific data, not aggregated data from all salons"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add backend data model and query methods to track and retrieve sales data per month for each salon, including total revenue and transaction counts",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "sales per month"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Sales data is tracked and stored per salon",
+        "Query method returns monthly sales aggregated by month",
+        "Sales data includes both revenue amounts and transaction counts"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Display a line or bar graph on the salon dashboard showing sales per month for the last 12 months with revenue amounts on the y-axis and months on the x-axis",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "graphs and data related to sales per month"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Graph visualizes sales trends over time",
+        "Shows data for the most recent 12 months",
+        "Revenue amounts are clearly labeled and formatted as currency",
+        "Months are displayed chronologically on the x-axis"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add backend query method to retrieve booking counts per month for a specific salon, aggregating appointment data by month",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "bookings per month"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Query returns booking counts grouped by month for a specific salon",
+        "Data includes all appointment statuses (pending, confirmed, completed, cancelled)",
+        "Method accepts salon ID as a parameter"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Display a line or bar graph on the salon dashboard showing bookings per month for the last 12 months with booking counts on the y-axis and months on the x-axis",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "graphs and data related to bookings per month"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Graph visualizes booking trends over time",
+        "Shows data for the most recent 12 months",
+        "Booking counts are clearly labeled with whole numbers",
+        "Months are displayed chronologically on the x-axis"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add backend data model and methods to store and retrieve customer reviews for each salon, including rating, comment text, reviewer name, and timestamp",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "reviews by customer"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Reviews are associated with specific salons",
+        "Each review includes rating (numeric score), comment text, reviewer identifier, and creation date",
+        "Query method retrieves all reviews for a specific salon"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Display customer reviews on the salon dashboard with rating, comment text, reviewer name, and date, sorted by most recent first",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "reviews by customer etc."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Reviews are displayed in a list or card format",
+        "Each review shows the rating (e.g., star visualization), comment text, reviewer name, and date",
+        "Reviews are sorted with most recent at the top",
+        "Empty state is shown when no reviews exist"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement authentication and authorization to ensure salon owners can only access their own salon dashboard data and cannot view other salons' analytics",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-user-latest"
+        ],
+        "quotes": [
+          "personalized dashboard per salon"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend validates salon ownership before returning dashboard data",
+        "Frontend prevents unauthorized access to other salons' dashboards",
+        "Appropriate error messages are shown for unauthorized access attempts"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use existing Appointment data model as the foundation for booking analytics",
+    "Maintain consistency with existing admin dashboard patterns in AdminSalonDashboardPage.tsx",
+    "Follow the established authentication flow using Internet Identity"
+  ],
+  "nonGoals": [
+    "Creating a separate admin view of all salon dashboards",
+    "Implementing real-time analytics updates",
+    "Adding export functionality for analytics data",
+    "Creating comparative analytics across multiple salons"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

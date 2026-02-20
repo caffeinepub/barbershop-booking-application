@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Salon booking app with photo upload, AI styling, and personalized salon dashboards featuring analytics (sales, bookings, reviews)",
+  "architectural_notes": [
+    "Salon dashboard requires authentication and salon-specific data isolation",
+    "Dashboard analytics need aggregation queries for monthly sales and bookings data",
+    "Review system integration required for customer feedback display"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-new-salon-specific-dashboard-route-accessible-after-salon-registration-that-displays-analytics-and-metrics-unique-to-each-salon",
+      "title": "Create a new salon-specific dashboard route accessible after salon registration that displays analytics and metrics unique to each salon",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-line-or-bar-graph-on-the-salon-dashboard-showing-sales-per-month-for-the-last-12-months-with-revenue-amounts-on-the-y-axis-and-months-on-the-x-axis",
+      "title": "Display a line or bar graph on the salon dashboard showing sales per month for the last 12 months with revenue amounts on the y-axis and months on the x-axis",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-line-or-bar-graph-on-the-salon-dashboard-showing-bookings-per-month-for-the-last-12-months-with-booking-counts-on-the-y-axis-and-months-on-the-x-axis",
+      "title": "Display a line or bar graph on the salon dashboard showing bookings per month for the last 12 months with booking counts on the y-axis and months on the x-axis",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-customer-reviews-on-the-salon-dashboard-with-rating-comment-text-reviewer-name-and-date-sorted-by-most-recent-first",
+      "title": "Display customer reviews on the salon dashboard with rating, comment text, reviewer name, and date, sorted by most recent first",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-authentication-and-authorization-to-ensure-salon-owners-can-only-access-their-own-salon-dashboard-data-and-cannot-view-other-salons-analytics",
+      "title": "Implement authentication and authorization to ensure salon owners can only access their own salon dashboard data and cannot view other salons' analytics",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Personalized dashboard per salon with sales per month graph",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Bookings per month graph in salon dashboard",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Customer reviews display in salon dashboard",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add backend data model and query methods to track and retrieve sales data per month for each salon, including total revenue and transaction counts",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add backend query method to retrieve booking counts per month for a specific salon, aggregating appointment data by month",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Add backend data model and methods to store and retrieve customer reviews for each salon, including rating, comment text, reviewer name, and timestamp",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "SalonHub AI Stylist",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

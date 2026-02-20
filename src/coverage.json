@@ -1,0 +1,129 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-20T11:43:11.730Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 8,
+    "implemented": 5,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a new salon-specific dashboard route accessible after salon registration that displays analytics and metrics unique to each salon",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add backend data model and query methods to track and retrieve sales data per month for each salon, including total revenue and transaction counts",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Display a line or bar graph on the salon dashboard showing sales per month for the last 12 months with revenue amounts on the y-axis and months on the x-axis",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/MonthlySalesChart.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/MonthlySalesChart.tsx",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Add backend query method to retrieve booking counts per month for a specific salon, aggregating appointment data by month",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Display a line or bar graph on the salon dashboard showing bookings per month for the last 12 months with booking counts on the y-axis and months on the x-axis",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/MonthlyBookingsChart.tsx",
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/MonthlyBookingsChart.tsx",
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Add backend data model and methods to store and retrieve customer reviews for each salon, including rating, comment text, reviewer name, and timestamp",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Display customer reviews on the salon dashboard with rating, comment text, reviewer name, and date, sorted by most recent first",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ReviewsList.tsx",
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ReviewsList.tsx",
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Implement authentication and authorization to ensure salon owners can only access their own salon dashboard data and cannot view other salons' analytics",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/AIStylingConsultationStep.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/MonthlyBookingsChart.tsx",
+    "frontend/src/components/MonthlySalesChart.tsx",
+    "frontend/src/components/ReviewsList.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/SalonOwnerDashboardPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
